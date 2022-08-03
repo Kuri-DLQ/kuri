@@ -1,0 +1,251 @@
+//Import the fonts
+@import url('https://fonts.googleapis.com/css2?family=Roboto&display=swap');
+
+$roboto: "Roboto", sans-serif;
+
+$regular: 300;
+$medium: 400;
+
+$primary: #153065;
+$secondary: #B12005;
+$darkblue: #274C7D;
+$lightblue: #D0F1FE;
+$lightcyan: #E0FFFF;
+$white: #ffffff;
+$coral: #FD7547;
+
+$theme-colors: (
+    primary: $primary,
+    secondary: $secondary,
+    light: $lightblue,
+    dark: $darkblue,
+    white: $white,
+    coral: $coral,
+    cyan: $lightcyan
+);
+
+@import '~bootstrap/scss/bootstrap.scss';
+
+body {
+    background: $white;
+    font-family: $roboto;
+}
+
+.header {
+    padding: 25px 0;
+    background-image: url('./assets/PNG/color/gradient_rectangle.png');
+    background-repeat: no-repeat;
+    background-size: 2000px 100px;
+}
+
+.kuri-logo {
+    display: inline-block;
+    margin-left: 30px;
+    height: 26px;
+}
+
+.kuri-logo:hover {
+    fill: $lightblue;
+}
+
+.github-logo {
+    height: 26px;
+    float: right;
+    fill: $primary;
+}
+
+.github-logo:hover {
+    fill: $secondary;
+}
+
+.arrow {
+  border: solid black;
+  border-width: 0 3px 3px 0;
+  display: inline-block;
+  padding: 3px;
+}
+
+.up {
+  transform: rotate(-135deg);
+  -webkit-transform: rotate(-135deg);
+}
+
+.down {
+  transform: rotate(45deg);
+  -webkit-transform: rotate(45deg);
+}
+
+//option 2
+
+.kuri-img {
+    height: 100px;
+}
+
+.kuri-icon {
+    grid-column: 1 / 2;
+    grid-row: 1 / 3;
+}
+
+.table-info {
+    margin: 40px 30px 30px 40px;
+    color: $primary;
+    justify-content: left;
+    display: grid;
+    grid-template-columns: repeat(2, auto-fit);
+    gap: 3rem;
+}
+
+.table-info-text {
+    font-size: 20px;
+    grid-column: 2;
+    grid-row: 1 / 3;
+}
+
+.table-info-button {
+    grid-column: 2;
+    grid-row: 2 / 3;
+}
+
+.delete {
+    margin-left: 10px;
+}
+
+.count {
+    color: $secondary;
+    font-weight: bolder;
+}
+
+.message-table {
+    padding: 2rem;
+}
+
+.table-items {
+    width: 100%;
+}
+
+.table-row {
+    color: $primary;
+    border-bottom: 0.25px solid $lightblue;
+    font-size: 14px;
+}
+
+.header-row {
+    color: $primary;
+    font-weight: 800;
+    font-size: 18px;
+}
+
+tr:hover td.cell {
+    background: $lightblue;
+    color: $coral;
+}
+
+td:nth-child(1) {
+    width: 275px;
+}
+
+td:nth-child(2) {
+    width: 250px;
+}
+
+td:nth-child(3) {
+    width: 500px;
+}
+
+td:nth-child(4) {
+    width: 10px;
+}
+
+td.message-body {
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    max-width: 500px;
+}
+
+.dropdown-item {
+    font-family: $roboto;
+    color: $primary;
+    font-size: 14px;
+}
+
+.dropdown-item:hover {
+    background-color: $primary;
+    color: $white;
+}
+
+.up {
+    position: absolute;
+    margin-top: 6px;
+}
+
+.arrow {
+    margin-left: 5px;
+    border: solid $primary;
+    border-width: 0 3px 3px 0;
+}
+
+.down {
+    transform: rotate(45deg);
+}
+
+.modalForm, .modalTitle {
+    font-family: $roboto;
+    color: $primary;
+    font-weight: bolder;
+}
+
+.modalTitle {
+    font-size: 20px;
+}
+
+.modalForm {
+    font-size: 18px;
+}
+
+.messageBody, .messageAttributes {
+    font-family: $roboto;
+    color: $darkblue;
+}
+
+.messageID, .messageTimestamp {
+    color: $secondary;
+}
+
+.messageBody:focus, .messageAttributes:focus {
+    color: $darkblue;
+}
+
+nav {
+    width: 100%;
+    position: fixed;
+    top: 92%;
+    left: 0%
+}
+
+ul {
+    position: relative;
+}
+
+.disabled {
+    color: grey !important;
+}
+
+.btn:focus,
+.page-link:focus {
+    box-shadow: none !important;
+}
+
+.btn:hover,
+.page-link:hover {
+    color: $coral  !important;
+}
+
+.footer {
+    height: 10px;
+    background-color: $primary;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+}

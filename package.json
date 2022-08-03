@@ -1,0 +1,43 @@
+{
+  "name": "kuri",
+  "type": "module",
+  "version": "1.0.0",
+  "description": "Dead-letter Queue as a Service for AWS Based Microservice Architectures",
+  "main": "index.js",
+  "bin": {
+    "kuri": "index.js"
+  },
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "viewDashboard": "cd server && npm start && cd ../kuri",
+    "installAppDependencies": "cd server && npm install && cd ../kuri",
+    "installClientDependencies": "cd dashboard && npm install && cd ../kuri"
+  },
+  "keywords": [],
+  "author": "Arjun Rasodha, Kris Ingva, Tony Beere, Anna Kolliakou",
+  "license": "ISC",
+  "dependencies": {
+    "@aws-sdk/client-cognito-identity-provider": "^3.131.0",
+    "@aws-sdk/client-dynamodb": "^3.137.0",
+    "@aws-sdk/client-iam": "^3.141.0",
+    "@aws-sdk/client-lambda": "^3.131.0",
+    "@aws-sdk/client-s3": "^3.135.0",
+    "@aws-sdk/client-sns": "^3.131.0",
+    "@aws-sdk/client-sqs": "^3.131.0",
+    "@aws-sdk/credential-provider-cognito-identity": "^3.131.0",
+    "@aws-sdk/util-dynamodb": "^3.121.0",
+    "amazon-cognito-identity-js": "^5.2.10",
+    "aws-sdk": "^2.1181.0",
+    "child_process": "^1.0.2",
+    "commander": "^8.3.0",
+    "concurrently": "^7.3.0",
+    "dotenv": "^16.0.1",
+    "fs-extra": "^10.1.0",
+    "inquirer": "^9.0.2",
+    "jszip": "^3.10.0",
+    "ora": "^6.1.2",
+    "path": "^0.12.7",
+    "prepend-file": "^2.0.1",
+    "uuid": "^8.3.2"
+  }
+}

@@ -1,0 +1,27 @@
+{
+  "name": "kuri-server",
+  "version": "1.0.0",
+  "description": "Express Server for Kuri",
+  "main": "index.js",
+  "type": "module",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev": "nodemon index.js",
+    "start": "concurrently \"node index.js\" \"cd ../dashboard && npm start\""
+  },
+  "author": "Arjun, Kris, Tony, Anna",
+  "license": "ISC",
+  "dependencies": {
+    "@aws-sdk/client-dynamodb": "^3.121.0",
+    "@aws-sdk/client-sqs": "^3.121.0",
+    "@aws-sdk/util-dynamodb": "^3.121.0",
+    "concurrently": "^7.3.0",
+    "cors": "^2.8.5",
+    "dotenv": "^16.0.1",
+    "axios": "^0.27.2",
+    "express": "^4.18.1"
+  },
+  "devDependencies": {
+    "nodemon": "^2.0.19"
+  }
+}
