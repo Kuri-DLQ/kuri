@@ -46,54 +46,53 @@ const reformatAttributes = (attributes) => {
 exports.handler = (event, context) => {
   for (const record of event.Records) {
     const message = {
-        blocks:[
-          {
-      			type: "section",
-      			text: {
-      			  type: 'mrkdwn',
-      			  text: "From Kuri:\n\n>A message has failed to be processed and was added to the DLQ\n>Please visit the Kuri dashboard to make modifications and resend"
-      			},
-            "accessory": {
-              "type": "image",
-              "image_url": "https://i.postimg.cc/v8PGLdXz/app-icon.png",
-              "alt_text": "kuri logo"
+      blocks:[
+        {
+          type: "section",
+          text: {
+            type: 'mrkdwn',
+            text: "From Kuri:\n\n>A message has failed to be processed and was added to the DLQ\n>Please visit the Kuri dashboard to make modifications and resend"
+          },
+          "accessory": {
+            "type": "image",
+            "image_url": "https://i.postimg.cc/v8PGLdXz/app-icon.png",
+            "alt_text": "kuri logo"
+          }
+        },
+        {
+          type: 'section',
+          fields: [
+            {
+              type: 'mrkdwn',
+              text: `*Main Queue:*\nKURI_QUEUE_NAME`
+            },
+            {
+              type: 'mrkdwn',
+              text: '*Timestamp (UTC):*\n' + getDayMonthYear(new Date(record.Sns.Timestamp))
+            },
+          ]
+        },
+        {
+          type: "divider"
+        },
+        {
+          type: 'section',
+          fields: [
+            {
+              type: 'mrkdwn',
+              text: `*Message Body:*\n${record.Sns.Message}`
+            },
+            {
+              type: 'mrkdwn',
+              text: '*Message Attributes:*\n' + JSON.stringify(reformatAttributes(record.Sns.MessageAttributes))
             }
-      		},
-          {
-            type: 'section',
-            fields: [
-              {
-                type: 'mrkdwn',
-                text: `*Main Queue:*\nKURI_QUEUE_NAME`
-              },
-              {
-                type: 'mrkdwn',
-                text: '*Timestamp (UTC):*\n' + getDayMonthYear(new Date(record.Sns.Timestamp))
-              },
-            ]
-          },
-       		{
-      			type: "divider"
-      		},
-          {
-            type: 'section',
-            fields: [
-              {
-                type: 'mrkdwn',
-                text: `*Message Body:*\n${record.Sns.Message}`
-              },
-              {
-                type: 'mrkdwn',
-                text: '*Message Attributes:*\n' + JSON.stringify(reformatAttributes(record.Sns.MessageAttributes))
-              }
-            ]
-          },
-          {
-      			type: "divider"
-      		},
-        ]
+          ]
+        },
+        {
+          type: "divider"
+        },
+      ]
     };
-
 
     const req = https.request(POST_OPTIONS, res => {
       res.setEncoding('utf8');

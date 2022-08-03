@@ -13,7 +13,11 @@
     "installAppDependencies": "cd server && npm install && cd ../kuri",
     "installClientDependencies": "cd dashboard && npm install && cd ../kuri"
   },
-  "keywords": [],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/Kuri-DLQ/kuri.git"
+  },
+  "keywords": ["AWS", "Dead Letter Queue", "Queue", "CLI"],
   "author": "Arjun Rasodha, Kris Ingva, Tony Beere, Anna Kolliakou",
   "license": "ISC",
   "dependencies": {
