@@ -1,18 +1,14 @@
 {
   "name": "kuri",
   "type": "module",
-  "version": "1.1.0",
+  "version": "1.1.5",
   "description": "Dead-letter Queue as a Service for AWS Based Microservice Architectures",
   "main": "index.js",
   "bin": {
     "kuri": "index.js"
   },
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
-    "viewDashboard": "cd server && npm start && cd ../kuri",
-    "installAppDependencies": "cd server && npm install && cd ../kuri",
-    "installClientDependencies": "cd dashboard && npm install && cd ../kuri",
-    "postinstall": "cd server && npm install && cd ../dashbaord && npm install"
+    "test": "echo \"Error: no test specified\" && exit 1"
   },
   "repository": {
     "type": "git",

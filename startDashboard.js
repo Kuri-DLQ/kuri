@@ -3,4 +3,6 @@ import { fileURLToPath } from 'url';
 import { exec } from 'child_process'
 const __dirname = dirname(fileURLToPath(import.meta.url));
 
-exec('cd ' + __dirname + '/server && npm start')
+export const startDashboard = () => {
+  exec('cd ' + __dirname + '/server && npm start')
+}

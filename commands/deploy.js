@@ -13,9 +13,10 @@ import { setEventSourceMapping } from "../aws_infrastructure/aws/lambda/lambdaEv
 import { subscribeToSns } from "../aws_infrastructure/aws/lambda/subscribeToSns.js"
 import { addPermissions } from "../aws_infrastructure/aws/lambda/addPermissions.js"
 import inquirer from 'inquirer';
-import { execFile } from 'child_process';
+import { exec } from 'child_process';
 import { getQueueName } from '../aws_infrastructure/aws/sqs/queueName.js';
 import prependFile from 'prepend-file';
+import { installNestedDependencies } from '../installNestedDependencies.js';
 
 import { v4 as uuidv4 } from 'uuid'
 const bucketName = `kuri-dlq-bucket-${uuidv4()}`
@@ -62,14 +63,14 @@ export const deploy = async () => {
     const useSlack = await inquirer.prompt([{
       name: 'slack',
       type: 'confirm',
-      message: 'Would you like to see DLQ notifications in Slack?',
+      message: 'Would you like to see notifications from Kuri in Slack?',
     }])
 
     if (useSlack.slack === true) {
       slackPath = await inquirer.prompt([{
         name: 'slack_path',
         type: 'input',
-        message: 'What is your slack path?'
+        message: 'What is your slack path? (hooks.slack.com/<your-slack-path>)'
       }])
       slackPath = slackPath.slack_path
     }
@@ -86,7 +87,7 @@ export const deploy = async () => {
 
     if (confirmation) {
       exec("touch .env");
-      execFile("./installNestedDependencies.js");
+      installNestedDependencies();
       await prependFile('.env', envFile);
     }
 
