@@ -156,7 +156,7 @@ export const deploy = async () => {
     spinner.succeed()
 
     spinner = log.spin('Subscribing Lambdas to SNS...')
-    await subscribeToSns(awsRegion, snsArn)
+    await subscribeToSns(awsRegion, snsArn, dlqArn)
     spinner.succeed();;
 
     spinner = log.spin('Adding permissions for SNS...')
