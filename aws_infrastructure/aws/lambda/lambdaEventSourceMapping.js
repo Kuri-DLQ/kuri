@@ -1,6 +1,6 @@
 import AWS from 'aws-sdk'
 import dotenv from 'dotenv'
-dotenv.config({path:'../../../.env'})
+dotenv.config({path:'./.env'})
 
 export const setEventSourceMapping = (region) => {
   const lambda = new AWS.Lambda({apiVersion: '2015-03-31', region });

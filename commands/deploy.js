@@ -109,22 +109,18 @@ export const deploy = async () => {
       })
     }  
 
-    let dlgArn;
+
     spinner = log.spin('Creating DLQ...')
-    await createDLQ().then((dlq_arn) => {
-      dlqArn = dlq_arn
-    })
+    await createDLQ()
     spinner.succeed();
 
     spinner = log.spin('Joining Main Queue and DLQ...')
-    await joinDlqMain(mainQueueUrl, dlqArn)
+    await joinDlqMain(mainQueueUrl)
     spinner.succeed();
 
     let snsArn;
     spinner = log.spin('Creating SNS Topic...')
-    await createTopic().then((sns_arn) => {
-      snsArn = sns_arn
-    })
+    await createTopic()
     spinner.succeed();
 
     spinner = log.spin('Creating Dynamo Table...')
@@ -136,7 +132,7 @@ export const deploy = async () => {
     spinner.succeed()
 
     spinner = log.spin('Replacing env variables...')
-    await setEnvVariables(awsRegion, slackPath, mainQueueUrl, snsArn)
+    await setEnvVariables(awsRegion, slackPath, mainQueueUrl)
     spinner.succeed()
 
     spinner = log.spin('Creating Zip Files...')
@@ -147,7 +143,7 @@ export const deploy = async () => {
     spinner.succeed()
 
     spinner = log.spin('Creating all Lambdas...')
-    await createLambdas(bucketName, awsRegion, roleArn)
+    await createLambdas(bucketName, awsRegion)
     spinner.succeed()
 
     spinner = log.spin('Setting Event Source Mapping for publishing to SNS...')
@@ -155,7 +151,7 @@ export const deploy = async () => {
     spinner.succeed()
 
     spinner = log.spin('Subscribing Lambdas to SNS...')
-    await subscribeToSns(awsRegion, snsArn)
+    await subscribeToSns(awsRegion)
     spinner.succeed();;
 
     spinner = log.spin('Adding permissions for SNS...')

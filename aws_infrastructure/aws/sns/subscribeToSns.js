@@ -1,6 +1,6 @@
 import AWS from "aws-sdk"
 import dotenv from 'dotenv'
-dotenv.config({path:'../../../.env'})
+dotenv.config({path:'./.env'})
 const sns = new AWS.SNS({ apiVersion: '2010-03-31', region: process.env.REGION })
 import { getAccountId } from '../lambda/awsAccountId';
 

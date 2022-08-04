@@ -1,9 +1,9 @@
 import {readFile, writeFile, writeFileSync, promises as fsPromises} from 'fs';
 import dotenv from 'dotenv'
-dotenv.config({path:'../../../.env'})
+dotenv.config({path:'./.env'})
 import { getQueueName } from '../aws/sqs/queueName.js'
 
-export const setEnvVariables = (region, slack_path, mainQueueUrl, snsArn) => {
+export const setEnvVariables = (region, slack_path, mainQueueUrl) => {
   return new Promise((resolve, reject) => {
     async function replaceInFile(filename, regex, replacement) {
       try {
@@ -24,7 +24,7 @@ export const setEnvVariables = (region, slack_path, mainQueueUrl, snsArn) => {
     (async () => {
       await replaceInFile('./aws_infrastructure/aws/lambda/handlers/publishToSnsLambda.js', regionRegex, region);
       await replaceInFile('./aws_infrastructure/aws/lambda/handlers/writeToDynamoLambda.js', regionRegex, region);
-      await replaceInFile('./aws_infrastructure/aws/lambda/handlers/publishToSnsLambda.js', snsArnRegex, snsArn);
+      await replaceInFile('./aws_infrastructure/aws/lambda/handlers/publishToSnsLambda.js', snsArnRegex, process.env.SNS_ARN);
       await replaceInFile('./aws_infrastructure/aws/lambda/handlers/postToSlackLambda.js', slackPathRegex, slack_path);
       await replaceInFile('./aws_infrastructure/aws/lambda/handlers/postToSlackLambda.js', queueNameRegex, getQueueName(mainQueueUrl));
     })()

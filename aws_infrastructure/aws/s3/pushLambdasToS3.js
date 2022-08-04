@@ -3,7 +3,7 @@ import { s3Client } from "../clients/s3Client.js";
 import path from "path";
 import fs from "fs";
 import dotenv from 'dotenv'
-dotenv.config({path:'../../../.env'})
+dotenv.config({path:'./.env'})
 
 export const pushLambdasToS3 = async (bucketName) => {
 

@@ -1,6 +1,6 @@
 import AWS from 'aws-sdk'
 import dotenv from 'dotenv'
-dotenv.config({path: '../../../.env'})
+dotenv.config({path: './.env'})
 import { getAccountId } from './awsAccountId.js'
 
 export const addPermissions = (region) => {
