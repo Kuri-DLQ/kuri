@@ -152,7 +152,7 @@ export const deploy = async () => {
     spinner.succeed()
 
     spinner = log.spin('Setting Event Source Mapping for publishing to SNS...')
-    await setEventSourceMapping(awsRegion)
+    await setEventSourceMapping(awsRegion, dlqArn)
     spinner.succeed()
 
     spinner = log.spin('Subscribing Lambdas to SNS...')
