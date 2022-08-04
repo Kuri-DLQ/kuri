@@ -7,7 +7,7 @@ import { createTable } from "../aws_infrastructure/aws/dynamodb/createDynamoTabl
 import { createBucket } from "../aws_infrastructure/aws/s3/createBucket.js"
 import { setEnvVariables } from "../aws_infrastructure/utils/replaceEnvVariables.js"
 import { createZipFiles } from "../aws_infrastructure/aws/lambda/createZipFile.js"
-import { pushLambdasToS3 } from "../aws_infrastructure/aws/s3/pushLambdasToS3.js"
+import { pushLambdasToS3 } from "../aws_infrastructure/aws/lambda/pushLambdasToS3.js"
 import { createLambdas } from "../aws_infrastructure/aws/lambda/createAllLambdas.js"
 import { setEventSourceMapping } from "../aws_infrastructure/aws/lambda/lambdaEventSourceMapping.js"
 import { subscribeToSns } from "../aws_infrastructure/aws/lambda/subscribeToSns.js"
@@ -109,7 +109,7 @@ export const deploy = async () => {
       })
     }  
 
-    let dlgArn;
+    let dlqArn;
     spinner = log.spin('Creating DLQ...')
     await createDLQ().then((dlq_arn) => {
       dlqArn = dlq_arn
@@ -136,11 +136,12 @@ export const deploy = async () => {
     spinner.succeed()
 
     spinner = log.spin('Replacing env variables...')
-    await setEnvVariables(awsRegion, slackPath, mainQueueUrl, snsArn)
+    await setEnvVariables(awsRegion, slackPath, mainQueueUrl)
     spinner.succeed()
 
     spinner = log.spin('Creating Zip Files...')
-    await createZipFiles().then(() => spinner.succeed())
+    await createZipFiles()
+    spinner.succeed()
 
     spinner = log.spin('Pushing Lambda Handlers to S3 Bucket...')
     await pushLambdasToS3(bucketName)
@@ -151,15 +152,15 @@ export const deploy = async () => {
     spinner.succeed()
 
     spinner = log.spin('Setting Event Source Mapping for publishing to SNS...')
-    await setEventSourceMapping(awsRegion)
+    await setEventSourceMapping(awsRegion, dlqArn)
     spinner.succeed()
 
     spinner = log.spin('Subscribing Lambdas to SNS...')
-    await subscribeToSns(awsRegion, snsArn)
+    await subscribeToSns(awsRegion, snsArn, dlqArn)
     spinner.succeed();;
 
     spinner = log.spin('Adding permissions for SNS...')
-    await addPermissions(awsRegion)
+    await addPermissions(awsRegion, snsArn, dlqArn)
     spinner.succeed();
   } catch (err) {
     spinner.fail()

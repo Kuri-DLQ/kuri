@@ -1,10 +1,10 @@
 import dotenv from 'dotenv'
-dotenv.config({path:'../../../.env'})
+dotenv.config({path:'./.env'})
 
 const accountRegex = new RegExp(/\d{12}/);
 
-export const getAccountId = () => {
-  const DLQArn = process.env.DLQ_ARN;
+export const getAccountId = (dlqArn) => {
+  const DLQArn = dlqArn;
   const accountId = accountRegex.exec(DLQArn)[0];
   return accountId;  
 }

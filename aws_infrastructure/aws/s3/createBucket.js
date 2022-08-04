@@ -1,7 +1,7 @@
 import { CreateBucketCommand } from "@aws-sdk/client-s3";
 import { s3Client } from "../clients/s3Client.js";
 import dotenv from 'dotenv'
-dotenv.config({path:'../../../.env'})
+dotenv.config({path:'./.env'})
 
 export const createBucket = async (bucketName) => {
   const bucketParams = { Bucket: bucketName };

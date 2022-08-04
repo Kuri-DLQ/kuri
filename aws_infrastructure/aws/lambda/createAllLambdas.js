@@ -1,6 +1,6 @@
 import { lambdaClient } from '../clients/lambdaClient.js'
 import dotenv from 'dotenv'
-dotenv.config({path:'../../../.env'})
+dotenv.config({path:'./.env'})
 import { CreateFunctionCommand } from "@aws-sdk/client-lambda";
 import AWS from 'aws-sdk'
 

@@ -5,7 +5,7 @@ import {
   CreatePolicyCommand
 } from "@aws-sdk/client-iam";
 import dotenv from 'dotenv'
-dotenv.config({path:'../../../.env'})
+dotenv.config({path:'./.env'})
 import fs from 'fs-extra'
 
 const REGION = process.env.REGION
@@ -61,7 +61,7 @@ export const createRole = async () => {
     let data;
     try {
       data = await iam.send(new CreateRoleCommand(createParams));
-      fs.appendFileSync('../../../.env', `\nROLE_ARN="${data.Role.Arn}"\n`)
+      fs.appendFileSync('./.env', `\nROLE_ARN="${data.Role.Arn}"\n`)
     } catch (err) {
       console.log("Error when creating role.");
       throw err;

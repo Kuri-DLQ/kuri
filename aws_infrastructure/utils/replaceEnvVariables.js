@@ -1,6 +1,6 @@
 import {readFile, writeFile, writeFileSync, promises as fsPromises} from 'fs';
 import dotenv from 'dotenv'
-dotenv.config({path:'../../../.env'})
+dotenv.config({path:'./.env'})
 import { getQueueName } from '../aws/sqs/queueName.js'
 
 export const setEnvVariables = (region, slack_path, mainQueueUrl, snsArn) => {
