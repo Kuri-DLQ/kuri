@@ -5,7 +5,7 @@ import { joinDlqMain } from "../aws_infrastructure/aws/sqs/join-dlq-main.js"
 import { createTopic } from "../aws_infrastructure/aws/sns/createTopic.js"
 import { createTable } from "../aws_infrastructure/aws/dynamodb/createDynamoTable.js"
 import { createBucket } from "../aws_infrastructure/aws/s3/createBucket.js"
-import { setEnvVariables } from "../aws_infrastructure/utils/replaceEnvVariables.js"
+import { setEnvVariables } from "../aws_infrastructure/aws/lambda/replaceEnvVariables.js"
 import { createZipFiles } from "../aws_infrastructure/aws/lambda/createZipFile.js"
 import { pushLambdasToS3 } from "../aws_infrastructure/aws/lambda/pushLambdasToS3.js"
 import { createLambdas } from "../aws_infrastructure/aws/lambda/createAllLambdas.js"
@@ -70,7 +70,7 @@ export const deploy = async () => {
       slackPath = await inquirer.prompt([{
         name: 'slack_path',
         type: 'input',
-        message: 'What is your slack path? (hooks.slack.com/<your-slack-path>)'
+        message: 'What is your slack path? (hooks.slack.com</your-slack-path>)'
       }])
       slackPath = slackPath.slack_path
     }
@@ -136,7 +136,7 @@ export const deploy = async () => {
     spinner.succeed()
 
     spinner = log.spin('Replacing env variables...')
-    await setEnvVariables(awsRegion, slackPath, mainQueueUrl)
+    await setEnvVariables(awsRegion, slackPath, mainQueueUrl, snsArn)
     spinner.succeed()
 
     spinner = log.spin('Creating Zip Files...')

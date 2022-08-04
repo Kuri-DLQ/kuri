@@ -2,7 +2,7 @@ const https = require('https');
 const util = require('util');
 
 const POST_OPTIONS = {
-  hostname: 'hooks.slack.com/',
+  hostname: 'hooks.slack.com',
   path: 'KURI_SLACK_PATH',
   method: 'POST',
 };

@@ -1,7 +1,7 @@
 import {readFile, writeFile, writeFileSync, promises as fsPromises} from 'fs';
 import dotenv from 'dotenv'
 dotenv.config({path:'./.env'})
-import { getQueueName } from '../aws/sqs/queueName.js'
+import { getQueueName } from '../sqs/queueName.js'
 import { dirname } from 'path';
 import { fileURLToPath } from 'url';
 
@@ -26,11 +26,11 @@ export const setEnvVariables = (region, slack_path, mainQueueUrl, snsArn) => {
     const queueNameRegex = new RegExp(/KURI_QUEUE_NAME/);
   
     (async () => {
-      await replaceInFile(__dirname + '../lambda/handlers/publishToSnsLambda.js', regionRegex, region);
-      await replaceInFile(__dirname +'../lambda/handlers/writeToDynamoLambda.js', regionRegex, region);
-      await replaceInFile(__dirname +'../lambda/handlers/publishToSnsLambda.js', snsArnRegex, snsArn);
-      await replaceInFile(__dirname +'../lambda/handlers/postToSlackLambda.js', slackPathRegex, slack_path);
-      await replaceInFile(__dirname + '../lambda/handlers/postToSlackLambda.js', queueNameRegex, getQueueName(mainQueueUrl));
+      await replaceInFile(__dirname + '/handlers/publishToSnsLambda.js', regionRegex, region);
+      await replaceInFile(__dirname + '/handlers/writeToDynamoLambda.js', regionRegex, region);
+      await replaceInFile(__dirname + '/handlers/publishToSnsLambda.js', snsArnRegex, snsArn);
+      await replaceInFile(__dirname + '/handlers/postToSlackLambda.js', slackPathRegex, slack_path);
+      await replaceInFile(__dirname + '/handlers/postToSlackLambda.js', queueNameRegex, getQueueName(mainQueueUrl));
     })()
 
     resolve()
