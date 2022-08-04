@@ -31,7 +31,7 @@ const TablePagination = ({ nPages, currentPage, setCurrentPage }) => {
             </a>
           </li>
         ))}
-        <li className={`page-item ${currentPage === nPages ? 'disabled' : ''}`}>
+        <li className={`page-item ${currentPage === nPages || nPages === 0 ? 'disabled' : ''}`}>
           <a className='page-link' 
             onClick={nextPage}
             href='/#'> 
