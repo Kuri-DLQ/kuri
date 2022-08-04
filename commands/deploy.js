@@ -7,7 +7,7 @@ import { createTable } from "../aws_infrastructure/aws/dynamodb/createDynamoTabl
 import { createBucket } from "../aws_infrastructure/aws/s3/createBucket.js"
 import { setEnvVariables } from "../aws_infrastructure/utils/replaceEnvVariables.js"
 import { createZipFiles } from "../aws_infrastructure/aws/lambda/createZipFile.js"
-import { pushLambdasToS3 } from "../aws_infrastructure/aws/s3/pushLambdasToS3.js"
+import { pushLambdasToS3 } from "../aws_infrastructure/aws/lambda/pushLambdasToS3.js"
 import { createLambdas } from "../aws_infrastructure/aws/lambda/createAllLambdas.js"
 import { setEventSourceMapping } from "../aws_infrastructure/aws/lambda/lambdaEventSourceMapping.js"
 import { subscribeToSns } from "../aws_infrastructure/aws/lambda/subscribeToSns.js"
