@@ -5,7 +5,7 @@ import { joinDlqMain } from "../aws_infrastructure/aws/sqs/join-dlq-main.js"
 import { createTopic } from "../aws_infrastructure/aws/sns/createTopic.js"
 import { createTable } from "../aws_infrastructure/aws/dynamodb/createDynamoTable.js"
 import { createBucket } from "../aws_infrastructure/aws/s3/createBucket.js"
-import { setEnvVariables } from "../aws_infrastructure/utils/replaceEnvVariables.js"
+import { setEnvVariables } from "../aws_infrastructure/aws/lambda/replaceEnvVariables.js"
 import { createZipFiles } from "../aws_infrastructure/aws/lambda/createZipFile.js"
 import { pushLambdasToS3 } from "../aws_infrastructure/aws/lambda/pushLambdasToS3.js"
 import { createLambdas } from "../aws_infrastructure/aws/lambda/createAllLambdas.js"
@@ -16,6 +16,7 @@ import inquirer from 'inquirer';
 import { exec } from 'child_process';
 import { getQueueName } from '../aws_infrastructure/aws/sqs/queueName.js';
 import prependFile from 'prepend-file';
+import { installNestedDependencies } from '../installNestedDependencies.js';
 
 import { v4 as uuidv4 } from 'uuid'
 const bucketName = `kuri-dlq-bucket-${uuidv4()}`
@@ -62,14 +63,14 @@ export const deploy = async () => {
     const useSlack = await inquirer.prompt([{
       name: 'slack',
       type: 'confirm',
-      message: 'Would you like to see DLQ notifications in Slack?',
+      message: 'Would you like to see notifications from Kuri in Slack?',
     }])
 
     if (useSlack.slack === true) {
       slackPath = await inquirer.prompt([{
         name: 'slack_path',
         type: 'input',
-        message: 'What is your slack path?'
+        message: 'What is your slack path? (hooks.slack.com</your-slack-path>)'
       }])
       slackPath = slackPath.slack_path
     }
@@ -86,8 +87,7 @@ export const deploy = async () => {
 
     if (confirmation) {
       exec("touch .env");
-      exec("npm run installClientDependencies");
-      exec("npm run installAppDependencies");
+      installNestedDependencies();
       await prependFile('.env', envFile);
     }
 
@@ -136,7 +136,7 @@ export const deploy = async () => {
     spinner.succeed()
 
     spinner = log.spin('Replacing env variables...')
-    await setEnvVariables(awsRegion, slackPath, mainQueueUrl)
+    await setEnvVariables(awsRegion, slackPath, mainQueueUrl, snsArn)
     spinner.succeed()
 
     spinner = log.spin('Creating Zip Files...')
