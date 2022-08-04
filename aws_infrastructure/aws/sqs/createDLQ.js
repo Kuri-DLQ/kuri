@@ -15,7 +15,7 @@ export const createDLQ = async () => {
       const dlqARN = await (await sqsClient.send(new GetQueueAttributesCommand({ QueueUrl: dlq.QueueUrl, AttributeNames: ['QueueArn']}))).Attributes.QueueArn;
       const dlqQueueNamee = getQueueName(dlq.QueueUrl)
       fs.appendFileSync('./.env', `DLQ_NAME="${dlqQueueNamee}"\nDLQ_URL="${dlq.QueueUrl}"\n`);         
-      resolve()
+      resolve(dlqARN)
     } catch (err) {
       reject(err);
     }

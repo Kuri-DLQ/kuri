@@ -3,7 +3,7 @@ import dotenv from 'dotenv'
 dotenv.config({path: './.env'})
 import { getAccountId } from './awsAccountId.js'
 
-export const addPermissions = (region) => {
+export const addPermissions = (region, snsArn) => {
   const lambda = new AWS.Lambda({apiVersion: '2015-03-31', region });
   return new Promise((resolve, reject) => {
     const awsAccountId = getAccountId();
@@ -13,7 +13,7 @@ export const addPermissions = (region) => {
       Principal: '*',
       StatementId: 'WriteToDynamoDB',
       SourceAccount: awsAccountId,
-      SourceArn: process.env.SNS_ARN
+      SourceArn: snsArn
     };
     
     lambda.addPermission(writeToDynamoParams, function (err, data) {
@@ -30,7 +30,7 @@ export const addPermissions = (region) => {
       Principal: '*',
       StatementId: 'postToSlackLambda',
       SourceAccount: awsAccountId,
-      SourceArn: process.env.SNS_ARN
+      SourceArn: snsArn
     
     };
     

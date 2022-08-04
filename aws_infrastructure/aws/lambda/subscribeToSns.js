@@ -9,7 +9,7 @@ export const subscribeToSns = (region, snsArn) => {
   return new Promise(async (resolve, reject) => {
     const dynamoParams = {
       Protocol: 'lambda',
-      TopicArn: process.env.SNS_ARN,
+      TopicArn: snsArn,
       Endpoint: `arn:aws:lambda:${region}:${getAccountId()}:function:writeToDynamoLambda`,
       ReturnSubscriptionArn: true || false
     };
@@ -21,7 +21,7 @@ export const subscribeToSns = (region, snsArn) => {
     
     const slackParams = {
       Protocol: 'lambda',
-      TopicArn: process.env.SNS_ARN,
+      TopicArn: snsArn,
       Endpoint: `arn:aws:lambda:${region}:${getAccountId()}:function:postToSlackLambda`,
       ReturnSubscriptionArn: true || false
     };

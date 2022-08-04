@@ -3,11 +3,11 @@ import { sqsClient } from  "../clients/sqsClient.js";
 import dotenv from 'dotenv'
 dotenv.config({path:'./.env'})
 
-export const joinDlqMain = async (mainQueueUrl) => {
+export const joinDlqMain = async (mainQueueUrl, dlqArn) => {
   const params = {
     Attributes: {
       RedrivePolicy:
-        `{"deadLetterTargetArn":"${process.env.DLQ_ARN}",` +
+        `{"deadLetterTargetArn":"${dlqArn}",` +
         '"maxReceiveCount":"3"}',
     },
     QueueUrl: mainQueueUrl,
