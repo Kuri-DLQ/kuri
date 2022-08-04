@@ -109,16 +109,22 @@ export const deploy = async () => {
       })
     }  
 
+    let dlgArn;
     spinner = log.spin('Creating DLQ...')
-    await createDLQ()
+    await createDLQ().then((dlq_arn) => {
+      dlqArn = dlq_arn
+    })
     spinner.succeed();
 
     spinner = log.spin('Joining Main Queue and DLQ...')
-    await joinDlqMain(mainQueueUrl)
+    await joinDlqMain(mainQueueUrl, dlqArn)
     spinner.succeed();
 
+    let snsArn;
     spinner = log.spin('Creating SNS Topic...')
-    await createTopic()
+    await createTopic().then((sns_arn) => {
+      snsArn = sns_arn
+    })
     spinner.succeed();
 
     spinner = log.spin('Creating Dynamo Table...')
@@ -126,26 +132,30 @@ export const deploy = async () => {
     spinner.succeed();
 
     spinner = log.spin('Creating S3 Bucket...')
-    await createBucket(bucketName).then(() => spinner.succeed())
+    await createBucket(bucketName)
+    spinner.succeed()
 
     spinner = log.spin('Replacing env variables...')
-    await setEnvVariables(awsRegion, slackPath, mainQueueUrl).then(() => spinner.succeed())
+    await setEnvVariables(awsRegion, slackPath, mainQueueUrl, snsArn)
+    spinner.succeed()
 
     spinner = log.spin('Creating Zip Files...')
     await createZipFiles().then(() => spinner.succeed())
 
     spinner = log.spin('Pushing Lambda Handlers to S3 Bucket...')
-    await pushLambdasToS3(bucketName).then(() => spinner.succeed())
+    await pushLambdasToS3(bucketName)
+    spinner.succeed()
 
     spinner = log.spin('Creating all Lambdas...')
-    await createLambdas(bucketName, awsRegion, roleArn).then(() => spinner.succeed())
+    await createLambdas(bucketName, awsRegion, roleArn)
+    spinner.succeed()
 
     spinner = log.spin('Setting Event Source Mapping for publishing to SNS...')
     await setEventSourceMapping(awsRegion)
     spinner.succeed()
 
     spinner = log.spin('Subscribing Lambdas to SNS...')
-    await subscribeToSns(awsRegion)
+    await subscribeToSns(awsRegion, snsArn)
     spinner.succeed();;
 
     spinner = log.spin('Adding permissions for SNS...')

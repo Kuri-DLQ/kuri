@@ -9,7 +9,7 @@ export const createTopic = async () => {
     try {
       const topic = await snsClient.send(new CreateTopicCommand(params));
       await fs.appendFile('../../../.env', `SNS_ARN="${topic.TopicArn}"\n`);
-      resolve(topic);
+      resolve(topic.TopicArn);
     } catch (err) {
       reject(err);
     }
