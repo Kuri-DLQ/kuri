@@ -160,7 +160,7 @@ export const deploy = async () => {
     spinner.succeed();;
 
     spinner = log.spin('Adding permissions for SNS...')
-    await addPermissions(awsRegion, snsArn)
+    await addPermissions(awsRegion, snsArn, dlqArn)
     spinner.succeed();
   } catch (err) {
     spinner.fail()
