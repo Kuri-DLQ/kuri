@@ -13,7 +13,7 @@ import { setEventSourceMapping } from "../aws_infrastructure/aws/lambda/lambdaEv
 import { subscribeToSns } from "../aws_infrastructure/aws/lambda/subscribeToSns.js"
 import { addPermissions } from "../aws_infrastructure/aws/lambda/addPermissions.js"
 import inquirer from 'inquirer';
-import { exec } from 'child_process';
+import { execFile } from 'child_process';
 import { getQueueName } from '../aws_infrastructure/aws/sqs/queueName.js';
 import prependFile from 'prepend-file';
 
@@ -86,8 +86,7 @@ export const deploy = async () => {
 
     if (confirmation) {
       exec("touch .env");
-      exec("npm run installClientDependencies");
-      exec("npm run installAppDependencies");
+      execFile("./installNestedDependencies.js");
       await prependFile('.env', envFile);
     }
 
