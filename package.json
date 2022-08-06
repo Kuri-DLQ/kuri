@@ -1,7 +1,7 @@
 {
   "name": "kuri",
   "type": "module",
-  "version": "1.2.5",
+  "version": "1.2.6",
   "description": "Dead-letter Queue as a Service for AWS Based Microservice Architectures",
   "main": "index.js",
   "bin": {
