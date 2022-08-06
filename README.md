@@ -9,24 +9,24 @@ Kuri can be used when building a brand new project or added on to an existing pr
 
 
 # Prerequisites
-1. Amazon Web Service Command Line Interface -- must be installed, up-to-date and configured
+1. Install Amazon Web Service Command Line Interface -- must be installed, up-to-date and configured
 To install AWS CLI see instructions: https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html
 To configre AWS credentials:
-```zsh
+```bash
 $ aws configure
 AWS Access Key ID [****************UUPR]: <enter access key id>
 AWS Secret Key ID [****************UUPR]: <enter secret key id>
 Region: <enter aws region>
 ```
-2. Install NodeJS version 12 or greater -- see Node docs for instructions: https://nodejs.org/en/download/
+2. Install NodeJS version 12 or greater -- see the NodeJS documentation for instructions: https://nodejs.org/en/download/
 
 # Usage
 To install Kuri run the following command globally:
-```zsh
+```bash
 $ npm install kuri -g
 ```
 To view Kuri help command run the `kuri` command:
-```zsh
+```bash
 $ kuri
 Usage: kuri <command>
 
@@ -40,10 +40,10 @@ Commands:
 To deploy your Kuri dead-letter queue service run the `kuri deploy` command and you will be prompted some
 initializing questions. 
 1. `Choose a starting template` -- you can either choose for Kuri to create a "Main Queue and DLQ" for a brand new project or if you want to add Kuri to an existing project that already has a main queue select the "DLQ Only" option. If you choose "DLQ Only" you will be prompted to provide your existing main queue url.
-2. Provide your AWS Region. This needs to be the same region that your project is deployed in and your AWS CLI is condfigured too.
-3. If you choose to receive Slack notification when a message appears in your Kuri dead-letter queue, provide your Slack API Webhook Path. For more details see: https://api.slack.com/apps
+2. Provide your AWS Region. This needs to be the same region that your project is deployed in and your AWS CLI is configured to.
+3. If you choose to receive Slack notifications when a message appears in your Kuri dead-letter queue, provide your Slack API Webhook Path. For more details see: https://api.slack.com/apps
 
-```zsh
+```bash
 $ kuri deploy
 ? Choose a starting template Main Queue and DLQ
 ? What is your AWS region? us-east-1
@@ -79,9 +79,18 @@ SLACK_PATH="/example_slack_path"
 ```
 
 Once your Kuri DLQ has been deployed you can run `kuri view` to launch your dashboard. Once run the dashboard should pop open within a minute. Note: sometimes launching can take up to a few minutes.
-```zsh
+```bash
 $ kuri view
 💻 Kuri Dashboard is starting...
 
 ❎ Press "ctrl + c" to close the dashboard
 ```
+# Team
+## Kris Ingva
+[Github](https://github.com/krisingva)
+## Anna Kolliakou
+[Github](https://github.com/akolliakou)
+## Tony Beere
+[Github](https://github.com/AJBeere)
+## Arjun Rasodha
+[Github](https://github.com/ARasodha)
