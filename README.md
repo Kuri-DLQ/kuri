@@ -7,7 +7,7 @@ Dead-letter Queue as a Service for Amazon Web Services (AWS)-Based Microservices
 
 # Prerequisites
 1. Install the AWS Command Line Interface -- must be installed, up-to-date and configured. To install the AWS CLI see instructions: https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html To configure the AWS credentials:
-```bash
+```console
 $ aws configure
 AWS Access Key ID [****************UUPR]: <enter access key id>
 AWS Secret Key ID [****************UUPR]: <enter secret key id>
@@ -17,15 +17,15 @@ Region: <enter aws region>
 
 # Usage
 To install Kuri run the following command globally:
-```bash
+```console
 $ npm install kuri -g
 ```
 To view the Kuri help commands run the kuri command:
-```bash
+```console
 $ kuri
 Usage: kuri <command>
 
-Welcome to Kuri DLQ-as-a-Service! See the commands below or the documentation at <doc link>
+Welcome to Kuri DLQ-as-a-Service! See the commands below or the documentation at https://kuri-dlq.github.io/
 
 Commands:
   deploy  -- Deploy Kuri Infrastructure
@@ -37,7 +37,7 @@ To deploy the Kuri DLQ service run the kuri deploy command and you will be promp
 2. `What is your AWS region?` -- provide your AWS Region. This needs to be the same region that your project is deployed in and your AWS CLI is configured to.
 3. `Would you like to see notifications from Kuri in Slack?` -- if you choose to receive a Slack notification when a message appears in your Kuri dead-letter queue, provide your Slack API Webhook Path. For more details see: https://api.slack.com/apps
 
-```bash
+```console
 $ kuri deploy
 ? Choose a starting template Main Queue and DLQ
 ? What is your AWS region? us-east-1
@@ -73,7 +73,7 @@ SLACK_PATH="/example_slack_path"
 ```
 
 Once the Kuri DLQ has been deployed, you can run kuri view to launch the Kuri Dashboard. Once run, the dashboard should pop open within a minute. Note: sometimes launching the dashboard can take up to a few minutes.
-```bash
+```console
 $ kuri view
 💻 Kuri Dashboard is starting...
 
