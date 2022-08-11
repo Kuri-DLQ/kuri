@@ -82,7 +82,7 @@ export const deploy = async () => {
     const confirmation = await inquirer.prompt([{
       name: 'confirmation',
       type: 'confirm',
-      message: `You entered:\n${envFile}\n Please confirm these selections (y/n)`,
+      message: `You entered:\n${envFile}\n Please confirm these selections`,
     }])
 
     if (confirmation) {
