@@ -1,12 +1,14 @@
 ![kuri](dashboard/public/logo_color.png)
 
 # Kuri
-## Dead-letter Queue as a Service
-Dead-letter Queue as a Service for Amazon Web Services (AWS)-Based Microservices Architectures. Kuri provides the user with the ability to edit, redrive and delete messages from their dead-letter queue (DLQ). Kuri creates an AWS infrastructure to construct a DLQ with increased functionality and observability for the user. Kuri can be used when building a brand new project or added on to an existing project that uses a message queue
+## Dead-letter Queue-as-a-Service
+Dead-letter Queue as a Service for Amazon Web Services (AWS)-Based Microservices Architectures. Kuri provides the user with the ability to edit, redrive and delete messages from their dead-letter queue (DLQ). Kuri creates an AWS infrastructure to construct a DLQ with increased functionality and observability for the user. Kuri can be used when building a brand new project or added on to an existing project that uses a message queue.
 
 
 # Prerequisites
-1. Install the AWS Command Line Interface -- must be installed, up-to-date and configured. To install the AWS CLI see instructions: https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html To configure the AWS credentials:
+1. Install the AWS Command Line Interface -- must be up-to-date and configured. 
+   To install the AWS CLI see instructions: https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html. 
+   To configure the AWS credentials:
 ```console
 $ aws configure
 AWS Access Key ID [****************UUPR]: <enter access key id>
@@ -72,7 +74,7 @@ SLACK_PATH="/example_slack_path"
 ╚═╝  ╚═╝ ╚═════╝ ╚═╝  ╚═╝╚═╝
 ```
 
-Once the Kuri DLQ has been deployed, you can run kuri view to launch the Kuri Dashboard. Once run, the dashboard should pop open within a minute. Note: sometimes launching the dashboard can take up to a few minutes.
+Once the Kuri DLQ has been deployed, you can run `kuri view` to launch the Kuri Dashboard. Once run, the dashboard should pop open within a minute. Note: sometimes launching the dashboard can take up to a few minutes.
 ```console
 $ kuri view
 💻 Kuri Dashboard is starting...
