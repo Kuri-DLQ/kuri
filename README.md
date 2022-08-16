@@ -5,9 +5,8 @@ Kuri is a Dead-Letter Queue-as-a-Service for Amazon Web Services (AWS)-Based Mic
 
 
 # Prerequisites
-1. Install the AWS Command Line Interface -- must be up-to-date and configured.</br>
-To install the AWS CLI see instructions: https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html.</br>
-To configure the AWS credentials:
+1. Install the AWS Command Line Interface -- must be up-to-date and configured.</br>To install the AWS CLI see instructions: https://docs.aws.amazon.com/cli/latest/userguide/getting-started-install.html.</br>To configure the AWS credentials:
+
 ```console
 $ aws configure
 AWS Access Key ID [****************UUPR]: <enter access key id>
