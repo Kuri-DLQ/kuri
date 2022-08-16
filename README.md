@@ -1,7 +1,7 @@
 ![kuri](dashboard/public/logo_color.png)
 
 ## Dead-Letter Queue-as-a-Service
-Dead-Letter Queue-as-a-Service for Amazon Web Services (AWS)-Based Microservices Architectures. Kuri provides the user with the ability to edit, redrive and delete messages from their dead-letter queue (DLQ). Kuri creates an AWS infrastructure to construct a DLQ with increased functionality and observability for the user. Kuri can be used when building a brand new project or added on to an existing project that uses a message queue.
+Kuri is a Dead-Letter Queue-as-a-Service for Amazon Web Services (AWS)-Based Microservices Architectures. It provides the user with the ability to edit, redrive and delete messages from their Dead-Letter Queue (DLQ). Kuri creates an AWS infrastructure to construct a DLQ with increased functionality and observability for the user. Kuri can be used when building a brand new project or added on to an existing project that uses a message queue.
 
 
 # Prerequisites
@@ -17,11 +17,11 @@ Region: <enter aws region>
 2. Install NodeJS version 12 or greater -- see the NodeJS documentation for instructions: https://nodejs.org/en/download/
 
 # Usage
-To install Kuri run the following command globally:
+To install Kuri, run the following command globally:
 ```console
 $ npm install kuri -g
 ```
-To view the Kuri help commands run the kuri command:
+To view the Kuri help commands, run the kuri command:
 ```console
 $ kuri
 Usage: kuri <command>
@@ -33,8 +33,8 @@ Commands:
   view    -- View Kuri Dashboard
 ```
 
-To deploy the Kuri DLQ service run the kuri deploy command and you will be prompted with the following initializing questions.
-1. `Choose a starting template` -- you can either choose for Kuri to create a "Main Queue and DLQ" for a brand new project or if you want to add Kuri to an existing project that already has a main queue select the "DLQ Only" option. If you choose "DLQ Only" you will be prompted to provide your existing main queue url.
+To deploy the Kuri DLQ service, run the `kuri deploy` command and you will be prompted with the following initializing questions.
+1. `Choose a starting template` -- you can either choose for Kuri to create a "Main Queue and DLQ" for a brand new project or if you want to add Kuri to an existing project that already has a main queue select the "DLQ Only" option. If you choose "DLQ Only", you will be prompted to provide your existing main queue url.
 2. `What is your AWS region?` -- provide your AWS Region. This needs to be the same region that your project is deployed in and your AWS CLI is configured to.
 3. `Would you like to see notifications from Kuri in Slack?` -- if you choose to receive a Slack notification when a message appears in your Kuri dead-letter queue, provide your Slack API Webhook Path. For more details see: https://api.slack.com/apps
 
