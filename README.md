@@ -17,10 +17,12 @@ Region: <enter aws region>
 
 # Usage
 To install Kuri, run the following command globally:
+
 ```console
 $ npm install kuri -g
 ```
-To view the Kuri help commands, run the kuri command:
+To view the Kuri help commands, run the `kuri` command:
+
 ```console
 $ kuri
 Usage: kuri <command>
@@ -73,6 +75,7 @@ SLACK_PATH="/example_slack_path"
 ```
 
 Once the Kuri DLQ has been deployed, you can run `kuri view` to launch the Kuri Dashboard. Once run, the dashboard should pop open within a minute. Note: sometimes launching the dashboard can take up to a few minutes.
+
 ```console
 $ kuri view
 💻 Kuri Dashboard is starting...
