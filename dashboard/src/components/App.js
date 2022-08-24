@@ -86,10 +86,10 @@ const App = () => {
   }
 
   const handleResend = async (messageToResend) => {
-    await messageService.resendMessage(messageToResend)
+    await messageService.resendMessage(messageToResend);
     await handleDelete(messageToResend.id);
 
-    const updatedMessageList = filterMessages(messageToResend.id)
+    const updatedMessageList = filterMessages(messageToResend.id);
     setMessages(updatedMessageList);
   }
 

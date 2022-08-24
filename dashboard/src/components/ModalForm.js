@@ -29,7 +29,7 @@ const ModalForm = ({ selectedMessage, setSelectedMessage, messages, setMessages,
       Message: body,
       Attributes: JSON.parse(attributes),
       Timestamp: selectedMessage.Timestamp,
-    }
+    };
 
     await messageService.updateMessage(selectedMessage.id, updatedMessage);
 
@@ -40,7 +40,7 @@ const ModalForm = ({ selectedMessage, setSelectedMessage, messages, setMessages,
       } else {
         return msg;
       }
-    })
+    });
 
     setMessages(updatedMessages);
 
@@ -56,7 +56,7 @@ const ModalForm = ({ selectedMessage, setSelectedMessage, messages, setMessages,
       Message: body,
       Attributes: JSON.parse(attributes),
       Timestamp: selectedMessage.Timestamp,
-    }
+    };
 
     await messageService.updateMessage(selectedMessage.id, updatedMessage);
 
@@ -81,25 +81,19 @@ const ModalForm = ({ selectedMessage, setSelectedMessage, messages, setMessages,
         </Modal.Header>
         <Modal.Body>
           <Form className='modalForm'>
-            <Form.Group
-              className='mb-3'
-            >
+            <Form.Group className='mb-3'>
               <Form.Label>Message ID</Form.Label>
               <div>
                 <Form.Text className='messageID'>{selectedMessage.id}</Form.Text>
               </div>
             </Form.Group>
-            <Form.Group
-              className='mb-3'
-            >
+            <Form.Group className='mb-3'>
               <Form.Label>Message Timestamp</Form.Label>
               <div>
                 <Form.Text className='messageTimestamp'>{selectedMessage.Timestamp}</Form.Text>
               </div>
             </Form.Group>
-            <Form.Group
-              className='mb-3'
-            >
+            <Form.Group className='mb-3'>
               <Form.Label>Message Body</Form.Label>
               <Form.Control
                 className='messageBody'
@@ -109,9 +103,7 @@ const ModalForm = ({ selectedMessage, setSelectedMessage, messages, setMessages,
                 onChange={handleBodyChange}
               />
             </Form.Group>
-            <Form.Group
-              className='mb-3'
-            >
+            <Form.Group className='mb-3'>
               <Form.Label>Message Attributes</Form.Label>
               <Form.Control
                 className='messageAttributes'

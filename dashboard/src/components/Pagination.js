@@ -1,16 +1,16 @@
 const TablePagination = ({ nPages, currentPage, setCurrentPage }) => {
-  const pageNumbers = [...Array(nPages + 1).keys()].slice(1)
+  const pageNumbers = [...Array(nPages + 1).keys()].slice(1);
     
   const nextPage = () => {
     if (currentPage !== nPages) {
       return setCurrentPage(currentPage + 1)
     }
-  }
+  };
   const prevPage = () => {
     if (currentPage !== 1) {
       return setCurrentPage(currentPage - 1)
     }
-  }
+  };
   
   return (
     <nav>

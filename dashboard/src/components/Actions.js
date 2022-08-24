@@ -14,13 +14,16 @@ const Actions = ({ message, messages, setMessages, onResend, onDelete }) => {
             messages={messages}
             setMessages={setMessages}
             onDelete={onDelete}
-            onResend={onResend} />
+            onResend={onResend}
+          />
           <Delete
             message={message}
-            onDelete={onDelete} />
+            onDelete={onDelete}
+          />
           < Redrive
             message={message}
-            onResend={onResend} />
+            onResend={onResend}
+          />
         </Dropdown.Menu>
       </Dropdown>
     </div>

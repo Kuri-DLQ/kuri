@@ -3,18 +3,18 @@ import Dropdown from 'react-bootstrap/Dropdown'
 import ModalForm from './ModalForm'
 
 const View = ({ message, messages, setMessages, onResend }) => {
-  const [selectedMessage, setSelectedMessage] = useState([message])
+  const [selectedMessage, setSelectedMessage] = useState([message]);
   const [showModalForm, setShowModalForm] = useState(false);
 
   const handleShowModalForm = () => {
     setShowModalForm(!showModalForm);
-  }
+  };
 
   const handleShowModal = (id) => {
-    const clickedMessage = messages.find(msg => msg.id === id)
+    const clickedMessage = messages.find(msg => msg.id === id);
     handleShowModalForm();
     setSelectedMessage(clickedMessage);
-  }
+  };
 
   return (
     <div>
@@ -26,7 +26,9 @@ const View = ({ message, messages, setMessages, onResend }) => {
         setMessages={setMessages}
         onResend={onResend}
         showModalForm={showModalForm}
-        handleShowModalForm={handleShowModalForm} />)}
+        handleShowModalForm={handleShowModalForm}
+      />
+      )}
     </div>
   )
 }
