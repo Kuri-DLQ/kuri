@@ -7,9 +7,7 @@ const TableItems = ({ messages, setMessages, currentMessages, onDelete, onResend
     <Table className='table-items'>
       <thead>
         <tr className='header-row'>
-          <th>
-            Message ID
-          </th>
+          <th>Message ID</th>
           <th>
             Message Timestamp
             <i className="arrow up" onClick={() => {

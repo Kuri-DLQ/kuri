@@ -3,12 +3,13 @@ const TablePagination = ({ nPages, currentPage, setCurrentPage }) => {
     
   const nextPage = () => {
     if (currentPage !== nPages) {
-      return setCurrentPage(currentPage + 1)
+      return setCurrentPage(currentPage + 1);
     }
   };
+
   const prevPage = () => {
     if (currentPage !== 1) {
-      return setCurrentPage(currentPage - 1)
+      return setCurrentPage(currentPage - 1);
     }
   };
   
@@ -43,4 +44,4 @@ const TablePagination = ({ nPages, currentPage, setCurrentPage }) => {
   )
 }
 
-export default TablePagination
+export default TablePagination;

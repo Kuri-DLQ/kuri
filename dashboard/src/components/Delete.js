@@ -6,4 +6,4 @@ const Delete = ({ message, onDelete }) => {
   )
 }
 
-export default Delete
+export default Delete;

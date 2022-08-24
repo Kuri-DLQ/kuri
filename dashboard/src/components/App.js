@@ -34,7 +34,7 @@ const App = () => {
       return 0;
     });
     return sortedMessages;
-  }
+  };
 
 
   const sortedMessages = handleSortMessages(messages);
@@ -42,7 +42,7 @@ const App = () => {
   const indexOfLastRecord = currentPage * recordsPerPage;
   const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
   const currentMessages = sortedMessages.slice(indexOfFirstRecord, indexOfLastRecord);
-  const nPages = Math.ceil(messages.length / recordsPerPage)
+  const nPages = Math.ceil(messages.length / recordsPerPage);
 
 
   useEffect(() => {
@@ -56,7 +56,7 @@ const App = () => {
     }
 
     run();
-  }, [])
+  }, []);
 
   useEffect(() => {
     const eventSource = new EventSource(`${baseUrl}/table/sse`);
@@ -67,13 +67,13 @@ const App = () => {
     return () => {
       eventSource.close();
     };
-  }, [])
+  }, []);
 
 
   const filterMessages = (id) => {
     const updatedMessageList = messages.filter(message => {
       return message.id !== id;
-    })
+    });
 
     return updatedMessageList;
   }
@@ -81,7 +81,7 @@ const App = () => {
   const handleDelete = async (id) => {
     await messageService.deleteMessage(id);
 
-    const updatedMessageList = filterMessages(id)
+    const updatedMessageList = filterMessages(id);
     setMessages(updatedMessageList);
   }
 
@@ -96,12 +96,12 @@ const App = () => {
   const handleDeleteAll = async () => {
     await tableService.deleteAllMessages();
     setMessages([]);
-  }
+  };
 
   const handleResendAll = async () => {
     await tableService.resendAllMessages();
     setMessages([]);
-  }
+  };
 
   return (
     <div>

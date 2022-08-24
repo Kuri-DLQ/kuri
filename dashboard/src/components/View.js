@@ -33,4 +33,4 @@ const View = ({ message, messages, setMessages, onResend }) => {
   )
 }
 
-export default View
+export default View;

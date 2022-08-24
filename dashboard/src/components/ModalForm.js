@@ -11,7 +11,7 @@ const ModalForm = ({ selectedMessage, setSelectedMessage, messages, setMessages,
   const handleModalClose = () => {
     handleShowModalForm();
     setSelectedMessage([]);
-  }
+  };
 
   const handleBodyChange = (e) => {
     setBody(e.target.value);
@@ -66,12 +66,12 @@ const ModalForm = ({ selectedMessage, setSelectedMessage, messages, setMessages,
 
     clearFields();
     handleShowModalForm();
-  }
+  };
 
   const clearFields = () => {
     setBody('');
     setAttributes('');
-  }
+  };
 
   return (
     <>
