@@ -1,7 +1,7 @@
-import Dropdown from 'react-bootstrap/Dropdown'
-import View from './View'
-import Delete from './Delete'
-import Redrive from './Redrive'
+import Dropdown from 'react-bootstrap/Dropdown';
+import View from './View';
+import Delete from './Delete';
+import Redrive from './Redrive';
 
 const Actions = ({ message, messages, setMessages, onResend, onDelete }) => {
   return (

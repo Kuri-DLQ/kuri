@@ -1,6 +1,6 @@
-import { useState } from 'react'
-import Dropdown from 'react-bootstrap/Dropdown'
-import ModalForm from './ModalForm'
+import { useState } from 'react';
+import Dropdown from 'react-bootstrap/Dropdown';
+import ModalForm from './ModalForm';
 
 const View = ({ message, messages, setMessages, onResend }) => {
   const [selectedMessage, setSelectedMessage] = useState([message]);

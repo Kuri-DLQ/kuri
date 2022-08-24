@@ -1,4 +1,4 @@
-import Actions from './Actions'
+import Actions from './Actions';
 
 const Row = ({ message, messages, setMessages, onDelete, onResend }) => {
   return (
