@@ -1,7 +1,7 @@
-import Dropdown from 'react-bootstrap/Dropdown'
-import View from './View'
-import Delete from './Delete'
-import Redrive from './Redrive'
+import Dropdown from 'react-bootstrap/Dropdown';
+import View from './View';
+import Delete from './Delete';
+import Redrive from './Redrive';
 
 const Actions = ({ message, messages, setMessages, onResend, onDelete }) => {
   return (
@@ -14,13 +14,16 @@ const Actions = ({ message, messages, setMessages, onResend, onDelete }) => {
             messages={messages}
             setMessages={setMessages}
             onDelete={onDelete}
-            onResend={onResend} />
+            onResend={onResend}
+          />
           <Delete
             message={message}
-            onDelete={onDelete} />
+            onDelete={onDelete}
+          />
           < Redrive
             message={message}
-            onResend={onResend} />
+            onResend={onResend}
+          />
         </Dropdown.Menu>
       </Dropdown>
     </div>
