@@ -5,7 +5,7 @@ import cli from "commander";
 import { deploy } from "./commands/deploy.js";
 import { view } from "./commands/view.js";
 
-cli.description("Welcome to Kuri DLQ-as-a-Service! See the commands below or the documentation at <doc link>");
+cli.description("Welcome to Kuri DLQ-as-a-Service! See the commands below or the documentation at https://github.com/Kuri-DLQ/kuri");
 cli.name("kuri");
 cli.usage("<command>");
 cli.addHelpCommand(false);
