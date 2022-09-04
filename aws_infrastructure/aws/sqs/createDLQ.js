@@ -20,5 +20,4 @@ export const createDLQ = async () => {
       reject(err);
     }
   })
-
 };
